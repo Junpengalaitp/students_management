@@ -4,6 +4,17 @@
     <title>Students Management System</title>
 </head>
 <body>
-    Hello {{ words }}
+    <h3><a href="/admin/">Admin</a></h3>
+    <ul>
+        {% for student in students %}
+            <li>{{ student.name }} - {{ student.get_status_display }}</li>
+        {% endfor %}
+    </ul>
+    <hr/>
+    <form action="/" method='POST'>
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value='Submit'>
+    </form>
 </body>
 </html>
